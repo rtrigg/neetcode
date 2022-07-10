@@ -1,2 +1,2 @@
-Solutions to problems from [needcode](https://neetcode.io).
+Solutions to problems from [neetcode](https://neetcode.io), a curated subset of problems from [leetcode](https://leetcode.com/).
 
