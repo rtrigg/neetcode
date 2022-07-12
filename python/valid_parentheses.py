@@ -18,13 +18,11 @@ class Solution:
         stack = []
         pairs = {")": "(", "}": "{", "]": "["}
         for paren in s:
-            if len(stack) == 0:
-                if paren in pairs:
-                    return False
+            if paren in pairs:
+                if len(stack) > 0 and pairs[paren] == stack[-1]:
+                    stack.pop()
                 else:
-                    stack.append(paren)
-            elif paren in pairs and pairs[paren] == stack[-1]:
-                stack.pop()
+                    return False
             else:
                 stack.append(paren)
         return len(stack) == 0
