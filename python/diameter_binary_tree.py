@@ -18,8 +18,9 @@ class TreeNode:
 
 class Solution:
     """
-    Diameter is the max of the 1) diameter of the left, 2) the diameter of the right,
-    and 3) the height of the left plus the height of the right subtrees.
+    Calculate the diameter and depth from the bottom up. The depth of the
+    parent node is one plus the max depth of the two child nodes. The diameter
+    is the depth of the left child plus the right, plus two.
     """
 
     def diameterOfBinaryTree(self, root: TreeNode | None) -> int:
