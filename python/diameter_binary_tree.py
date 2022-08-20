@@ -23,16 +23,16 @@ class Solution:
     """
 
     def diameterOfBinaryTree(self, root: TreeNode | None) -> int:
-        if root is None:
-            return 0
-        return max(
-            self.diameterOfBinaryTree(root.left),
-            self.diameterOfBinaryTree(root.right),
-            self.maxDepth(root.left) + self.maxDepth(root.right),
-        )
+        diameter = 0
 
-    def maxDepth(self, root: TreeNode, depth=0):
-        if root is None:
-            return depth
-        depth += 1
-        return max(self.maxDepth(root.left, depth), self.maxDepth(root.right, depth))
+        def depth_first_search(root):
+            nonlocal diameter
+            if root is None:
+                return -1
+            left_depth = depth_first_search(root.left)
+            right_depth = depth_first_search(root.right)
+            diameter = max(diameter, 2 + left_depth + right_depth)
+            return 1 + max(left_depth, right_depth)
+
+        depth_first_search(root)
+        return diameter
